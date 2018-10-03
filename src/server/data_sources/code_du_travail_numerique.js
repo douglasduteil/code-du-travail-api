@@ -10,11 +10,19 @@ const elasticsearchTypeName = "code_du_travail_numerique";
  * @param {int} size The number of results to return.
  * @returns {Object} An elasticsearch response.
  */
-async function search(query, size) {
+async function search({
+  query,
+  size = 10,
+  must = [],
+  should = [],
+  fragment_size = 40,
+  ...others
+}) {
   let elasticsearchQuery = {
     index: elasticsearchIndexName,
     body: {
       size: size,
+      ...others,
       query: {
         bool: {
           must: [
@@ -57,7 +65,8 @@ async function search(query, size) {
                   }
                 ]
               }
-            }
+            },
+            ...must
           ],
           should: [
             {
@@ -85,13 +94,15 @@ async function search(query, size) {
               }
             },
             // Temporarily put "fonction publique" and "agent public" results in a less prominent position.
+            // todo: add a disclaimer
             {
               query_string: {
                 query:
                   '(title.shingle:"fonction publique") OR (title.shingle:"agent public")',
                 boost: -2000
               }
-            }
+            },
+            ...should
           ]
         }
       },
@@ -99,7 +110,7 @@ async function search(query, size) {
         order: "score",
         pre_tags: ["<mark>"],
         post_tags: ["</mark>"],
-        fragment_size: 40,
+        fragment_size: fragment_size,
         fields: {
           "title.french_stemmed": {},
           "title.french_exact": {},
@@ -150,7 +161,6 @@ async function getSingleItem(params) {
                 must: {
                   match: { source }
                 },
-
                 filter: { term: { slug } }
               }
             }

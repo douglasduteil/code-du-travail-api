@@ -17,7 +17,21 @@ const BASE_URL = `/api/v1`;
 router.get(`${BASE_URL}/search`, async ctx => {
   try {
     let query = ctx.request.query.q;
-    ctx.body = await codeDuTravailNumerique.search(query, 5);
+    ctx.body = await codeDuTravailNumerique.search({ query });
+  } catch (error) {
+    console.trace(error.message);
+  }
+});
+
+router.get(`${BASE_URL}/suggest`, async ctx => {
+  try {
+    let query = ctx.request.query.q;
+    ctx.body = await codeDuTravailNumerique.search({
+      query,
+      fragment_size: 200,
+      size: 5,
+      _source: ["title", "source", "slug"]
+    });
   } catch (error) {
     console.trace(error.message);
   }
