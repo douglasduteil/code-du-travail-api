@@ -1,3 +1,26 @@
+:skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull:
+
+<br>
+<br>
+
+<h3 align=center><a href=https://github.com/SocialGouv/code-du-travail-numerique/tree/master/packages/code-du-travail-api>Migrated to SocialGouv/code-du-travail-numerique monorepo</a></h3>
+
+<br>
+<br>
+
+:skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull::skull:
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+<br>
+<br>
+<br>
+
 # Code du travail - API
 
 Ce dépôt de code contient l'API permettant d'intérroger les différentes sources de données relatives au Code du travail.
